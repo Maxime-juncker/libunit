@@ -4,7 +4,6 @@ MAKEFLAGS += --no-print-directory
 
 SRC =	utils.c		\
 		tester.c	\
-		tmp.c		\
 
 OBJ = $(SRC:.c=.o)
 

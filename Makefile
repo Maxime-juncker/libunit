@@ -14,7 +14,7 @@ OBJ := $(SRCS:.c=.o)
 OBJ_STR := $(ATOI_SRC:.c=.o)
 
 OBJ_D = obj/
-SRCS_D = tests/
+SRCS_D = real-tests/
 BIN_D = bin/
 LOG_D = log/
 INCLUDES_D = -Iincludes/ -Iframework/includes/ -Iframework/libft/includes/ -Ilibft/includes
