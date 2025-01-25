@@ -3,7 +3,7 @@
 
 # include <libft.h>
 # include <sys/wait.h>
-#include <signal.h>
+# include <signal.h>
 
 typedef struct s_test
 {
@@ -13,7 +13,7 @@ typedef struct s_test
 }	t_test;
 
 // utils.c
-void	print_result(int test_pass, int total);
+int		print_result(int test_pass, int total);
 
 
 // main.c

@@ -4,4 +4,7 @@
 int	main(void)
 {
 	atoi_launch();
+	// strlen_launch();
+	// ft_itoa_launch();
+	// etc...
 }

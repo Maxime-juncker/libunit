@@ -51,7 +51,7 @@ libunit:
 libft:
 	$(MAKE) -C ./libft
 
-$(BIN_D)$(NAME): $(BIN_D)
+$(BIN_D)$(NAME): $(BIN_D) framework/bin/libunit.a
 	printf "$(BLUE)compiling: [$$(ls obj | wc -l)/$(shell ls $(SRCS_D) | wc -l)] [OK]\r\n"
 	$(CC) $(CFLAGS) $(SRCS) framework/bin/libunit.a framework/libft/bin/libft.a -o $(BIN_D)$(NAME)
 	printf "$(GREEN)$(NAME): success\n"

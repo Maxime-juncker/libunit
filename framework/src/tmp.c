@@ -3,12 +3,12 @@
 
 int	test_OK(void)
 {
-	exit(0);
+	return(0);
 }
 
 int	test_KO(void)
 {
-	exit(-1);
+	return(-1);
 }
 
 int	test_segv(void)
@@ -16,7 +16,7 @@ int	test_segv(void)
 	int	*tmp = NULL;
 
 	tmp[1] = 0;
-	exit(0);
+	return(0);
 }
 
 #include <fcntl.h>

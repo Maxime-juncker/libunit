@@ -23,7 +23,16 @@ int	check_test(t_test *test, int code)
 	return (0);
 }
 
+int	run_function(t_test *test, t_list *first)
+{
+	int	code;
+	int (*f) (void);
 
+	f = test->f;
+	ft_lstclear(&first, &free);
+	code = f();
+	return (code);
+}
 
 int	run_test(t_list *tests)
 {
@@ -31,9 +40,11 @@ int	run_test(t_list *tests)
 	int	test_pass;
 	int	code;
 	int	pid;
+	t_list	*first;
 
 	total = ft_lstsize(tests);
 	test_pass = 0;
+	first = tests;
 	while (tests != NULL)
 	{
 		pid = fork();
@@ -42,14 +53,16 @@ int	run_test(t_list *tests)
 		test = (t_test*)(tests->content);
 		if (pid == 0)
 		{
-			exit(test->f());
+			code = run_function(test, first);
+			exit(code);
 		}
 		wait(&code);
 		test_pass += check_test(test, code);
 		tests = tests->next;
 	}
-	print_result(test_pass, total);
-	return (0);
+	code = print_result(test_pass, total);
+	ft_lstclear(&first, &free);
+	return (code);
 }
 
 t_test	*new_test(const char *f_name, const char *t_name, int (*f)(void))
@@ -70,7 +83,7 @@ void	load_test(t_list **lst, t_test *new)
 {
 	if (new == NULL)
 	{
-		// cleanup
+		ft_lstclear(lst, &free);
 		exit(EXIT_FAILURE);
 	}
 	ft_lstadd_back(lst, ft_lstnew((void *)new));
