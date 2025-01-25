@@ -3,14 +3,14 @@
 
 # include <libunit.h>
 
-// ft_strlen.c
-size_t	ft_strlen_test(char *s);
-
 // launcher.c
-int		strlen_launch(void);
+int		atoi_launch(void);
 
 // tests:
 int		NULL_test(void);
 int		basic_test(void);
+int		basic_overflow(void);
+int		basic_underflow(void);
+
 
 #endif

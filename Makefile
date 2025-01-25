@@ -4,25 +4,26 @@ MAKEFLAGS += --no-print-directory
 
 SRCS =	main.c						\
 
-STRLEN_SRC =	00_launcher.c		\
-				01_basic_test.c		\
-				02_NULL_test.c		\
-				ft_strlen_test.c	\
+ATOI_SRC =	00_launcher.c			\
+			01_basic_test.c			\
+			02_NULL_test.c			\
+			03_basic_overflow.c		\
+			04_basic_underflow.c	\
 
 OBJ := $(SRCS:.c=.o)
-OBJ_STR := $(STRLEN_SRC:.c=.o)
+OBJ_STR := $(ATOI_SRC:.c=.o)
 
 OBJ_D = obj/
 SRCS_D = tests/
 BIN_D = bin/
 LOG_D = log/
-INCLUDES_D = -Iincludes/ -Iframework/includes/ -Iframework/libft/includes/
+INCLUDES_D = -Iincludes/ -Iframework/includes/ -Iframework/libft/includes/ -Ilibft/includes
 
 OBJ := $(addprefix $(OBJ_D), $(OBJ))
 SRCS := $(addprefix $(SRCS_D), $(SRCS))
-STRLEN_SRC := $(addprefix $(SRCS_D)strlen/, $(STRLEN_SRC))
+ATOI_SRC := $(addprefix $(SRCS_D)atoi/, $(ATOI_SRC))
 
-SRCS += $(STRLEN_SRC)
+SRCS += $(ATOI_SRC)
 
 # colors
 RESET 			= \033[0m
@@ -35,7 +36,7 @@ CURSOR_ON 		= \e[?25h
 
 RM = rm -fr
 
-all: libunit $(BIN_D)$(NAME)
+all: libft libunit $(BIN_D)$(NAME)
 
 tmp:
 	echo "$(OBJ)"
@@ -45,6 +46,10 @@ tmp:
 .PHONY: libunit
 libunit:
 	$(MAKE) -C ./framework
+
+.PHONY: libft
+libft:
+	$(MAKE) -C ./libft
 
 $(BIN_D)$(NAME): $(BIN_D)
 	printf "$(BLUE)compiling: [$$(ls obj | wc -l)/$(shell ls $(SRCS_D) | wc -l)] [OK]\r\n"
@@ -62,12 +67,14 @@ clean:
 	printf "$(RED)clean:\t$(NAME)\n\n"
 	$(RM) $(OBJ_D)
 	$(MAKE) clean -C ./framework
+	$(MAKE) clean -C ./libft
 	printf "$(RED)---------------------\n\n$(RESET)"
 	$(MAKE) clog
 
 .PHONY: fclean
 fclean:
 	$(MAKE) fclean -C ./framework
+	$(MAKE) fclean -C ./libft
 	$(RM) $(BIN_D)
 	printf "$(RED)fclean:\t$(NAME)\n"
 	$(MAKE) clean
