@@ -1,16 +1,18 @@
-NAME = test
+NAME = libunit.a
 CFLAGS = -Wall -Wextra -Werror $(INCLUDES_D) -g3
 MAKEFLAGS += --no-print-directory
 
 SRC =	main.c		\
+		tester.c	\
+		tmp.c		\
 
 OBJ = $(SRC:.c=.o)
 
 OBJ_D = obj/
-SRCS_D = tests/
+SRCS_D = src/
 BIN_D = bin/
 LOG_D = log/
-INCLUDES_D = -Iincludes/ -Iframework/includes/ -Iframework/libft/includes/
+INCLUDES_D = -Iincludes/ -Ilibft/includes/
 
 OBJ := $(addprefix $(OBJ_D), $(OBJ))
 SRCS := $(addprefix $(SRCS_D), $(SRCS))
@@ -27,33 +29,34 @@ CURSOR_ON 		= \e[?25h
 RM = rm -fr
 ARGS = 1
 
-all: libunit $(BIN_D)$(NAME)
+all: libft $(BIN_D)$(NAME)
 
-.PHONY: libunit
-libunit:
-	$(MAKE) -C ./framework
+
+.PHONY: libft
+libft:
+	$(MAKE) -C libft
 
 $(BIN_D)$(NAME): $(OBJ) $(BIN_D)
-	printf "$(BLUE)compiling: [$$(ls obj | wc -l)/$(shell ls $(SRCS_D) | wc -l)] [OK]\r\n"
-	$(CC) $(CFLAGS) $(OBJ) framework/bin/libunit.a framework/libft/bin/libft.a -o $(BIN_D)$(NAME)
+	printf "$(BLUE)compiling: [$$(ls obj | wc -l)/$(shell ls src | wc -l)] [OK]\r\n"
+	ar rcs $(BIN_D)$(NAME) $(OBJ) libft/bin/libft.a
 	printf "$(GREEN)$(NAME): success\n"
 	printf "\n---------------------$(CURSOR_ON)\n\n"
 
-$(OBJ_D)%.o : $(SRCS_D)%.c framework/bin/libunit.a | $(OBJ_D)
+$(OBJ_D)%.o : $(SRCS_D)%.c includes/libunit.h libft/bin/libft.a | $(OBJ_D)
 	printf "$(CURSOR_OFF)$(BLUE)"
-	printf "compiling: [$$(ls obj | wc -l)/$(shell ls $(SRCS_D) | wc -l)]\r"
+	printf "compiling: [$$(ls obj | wc -l)/$(shell ls src | wc -l)]\r"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
 	printf "$(RED)clean:\t$(NAME)\n\n"
-	$(MAKE) clean -C ./framework
+	$(MAKE) clean -C ./libft
 	printf "$(RED)---------------------\n\n$(RESET)"
 	$(MAKE) clog
 
 .PHONY: fclean
 fclean:
-	$(MAKE) fclean -C ./framework
+	$(MAKE) fclean -C ./libft
 	$(RM) $(BIN_D)
 	printf "$(RED)fclean:\t$(NAME)\n"
 	$(MAKE) clean

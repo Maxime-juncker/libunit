@@ -10,11 +10,11 @@ typedef struct s_test
 	const char	*test_name;
 	const char	*function_name;
 	int			(*f)(void);
-
-	//! FOR TESTING
-	int	exit_code;
 }	t_test;
 
+// main.c
+t_test	*new_test(const char *f_name, const char *t_name, int (*f)(void));
+void	add_test_to_lst(t_list **lst, t_test *new);
 
 // tester.c
 int	run_test(t_list *tests);
