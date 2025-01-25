@@ -5,32 +5,25 @@ int	check_test(t_test *test, int code)
 	// check process exit code
 	if (WTERMSIG(code) == SIGSEGV)
 	{
-		ft_printf("%s[%s]:[%s]:[SIGSEGV]\n%s", RED, test->function_name, test->test_name, RESET);
+		ft_printf("%s%s:%s:[SEGV]\n%s", RED, test->function_name, test->test_name, RESET);
 		return (0);
 	}
 	if (WTERMSIG(code) == SIGBUS)
 	{
-		ft_printf("%s[%s]:[%s]:[SIGBUS]\n%s", RED, test->function_name, test->test_name, RESET);
+		ft_printf("%s%s:%s:[SIGBUS]\n%s", RED, test->function_name, test->test_name, RESET);
 		return (0);
 	}
 	if (WEXITSTATUS(code) == 0)
 	{
-		ft_printf("%s[%s]:[%s]:[OK]\n%s", GREEN, test->function_name, test->test_name, RESET);
+		ft_printf("%s%s:%s:[OK]\n%s", GREEN, test->function_name, test->test_name, RESET);
 		return (1);
 	}
 	//* 255 = -1 (unsigned)
-	ft_printf("%s[%s]:[%s]:[KO]\n%s", RED, test->function_name, test->test_name, RESET);
+	ft_printf("%s%s:%s:[KO]\n%s", RED, test->function_name, test->test_name, RESET);
 	return (0);
 }
 
-void	print_result(int test_pass, int total)
-{
-	ft_printf("\ntests results: %d/%d ", test_pass, total);
-	if (test_pass < total)
-		ft_printf("%s[KO]%s\n", RED, RESET);
-	else
-		ft_printf("%s[OK]%s\n", GREEN, RESET);
-}
+
 
 int	run_test(t_list *tests)
 {
@@ -57,4 +50,28 @@ int	run_test(t_list *tests)
 	}
 	print_result(test_pass, total);
 	return (0);
+}
+
+t_test	*new_test(const char *f_name, const char *t_name, int (*f)(void))
+{
+	t_test	*new_test;
+
+	new_test = malloc(sizeof(t_test));
+	if (new_test == NULL)
+		return (NULL);
+	new_test->function_name = f_name;
+	new_test->test_name = t_name;
+	new_test->f = f;
+
+	return (new_test);
+}
+
+void	load_test(t_list **lst, t_test *new)
+{
+	if (new == NULL)
+	{
+		// cleanup
+		exit(EXIT_FAILURE);
+	}
+	ft_lstadd_back(lst, ft_lstnew((void *)new));
 }

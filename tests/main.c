@@ -1,16 +1,18 @@
 #include <libunit.h>
 #include <libft.h>
+#include "strlen/strlen_tests.h"
 
 int	main(void)
 {
-	t_list	*tests;
-	tests = NULL;
+	strlen_launch();
+	// t_list	*tests;
+	// tests = NULL;
 
-	add_test_to_lst(&tests, new_test("test01", "OK_test", &test_OK));
-	add_test_to_lst(&tests, new_test("test02", "OK_test", &test_OK));
-	add_test_to_lst(&tests, new_test("test03", "KO_test", &test_KO));
-	add_test_to_lst(&tests, new_test("test04", "segfault", &test_segv));
-	add_test_to_lst(&tests, new_test("test05", "bus err", &test_bus_err));
+	// load_test(&tests, new_test("test01", "OK_test", &test_OK));
+	// load_test(&tests, new_test("test02", "OK_test", &test_OK));
+	// load_test(&tests, new_test("test03", "KO_test", &test_KO));
+	// load_test(&tests, new_test("test04", "segfault", &test_segv));
+	// load_test(&tests, new_test("test05", "bus err", &test_bus_err));
 
-	run_test(tests);
+	// run_test(tests);
 }

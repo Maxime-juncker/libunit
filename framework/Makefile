@@ -2,7 +2,7 @@ NAME = libunit.a
 CFLAGS = -Wall -Wextra -Werror $(INCLUDES_D) -g3
 MAKEFLAGS += --no-print-directory
 
-SRC =	main.c		\
+SRC =	utils.c		\
 		tester.c	\
 		tmp.c		\
 
@@ -51,6 +51,7 @@ $(OBJ_D)%.o : $(SRCS_D)%.c includes/libunit.h libft/bin/libft.a | $(OBJ_D)
 clean:
 	printf "$(RED)clean:\t$(NAME)\n\n"
 	$(MAKE) clean -C ./libft
+	$(RM) $(OBJ_D)
 	printf "$(RED)---------------------\n\n$(RESET)"
 	$(MAKE) clog
 

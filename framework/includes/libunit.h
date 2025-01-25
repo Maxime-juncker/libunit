@@ -12,9 +12,13 @@ typedef struct s_test
 	int			(*f)(void);
 }	t_test;
 
+// utils.c
+void	print_result(int test_pass, int total);
+
+
 // main.c
 t_test	*new_test(const char *f_name, const char *t_name, int (*f)(void));
-void	add_test_to_lst(t_list **lst, t_test *new);
+void	load_test(t_list **lst, t_test *new);
 
 // tester.c
 int	run_test(t_list *tests);
