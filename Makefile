@@ -2,7 +2,9 @@ NAME = libunit.out
 CFLAGS = -Wall -Wextra -Werror $(INCLUDES_D) -g3
 MAKEFLAGS += --no-print-directory
 
-SRC =	main.c
+SRC =	main.c		\
+		tester.c	\
+		tmp.c		\
 
 OBJ = $(SRC:.c=.o)
 
@@ -11,7 +13,6 @@ SRCS_D = src/
 BIN_D = bin/
 LOG_D = log/
 INCLUDES_D = -Iincludes/ -Ilibft/includes/
-
 
 OBJ := $(addprefix $(OBJ_D), $(OBJ))
 SRCS := $(addprefix $(SRCS_D), $(SRCS))
