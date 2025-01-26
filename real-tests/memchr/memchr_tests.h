@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:50:43 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/25 19:27:53 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 10:39:35 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 # include <libunit.h>
 # include <libft.h>
-
-# define IGNORE_0 0
-# define IGNORE_1 0
-# define IGNORE_2 0
-# define IGNORE_3 0
 
 int	memchr_launch(int *total);
 

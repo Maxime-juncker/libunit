@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_big_n.c                                         :+:      :+:    :+:   */
+/*   02_ko_test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 18:06:56 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:43:09 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 10:54:32 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 10:55:35 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memchr_tests.h"
+#include "tests.h"
 
-int	big_n_test(void)
+int	ko_test(void)
 {
-	if (ft_memchr("bonjour", 'i', 7) == NULL)
+	if (ft_strlen("hello") != 5)
 		return (0);
 	else
 		return (-1);

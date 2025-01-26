@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_big_n.c                                         :+:      :+:    :+:   */
+/*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 18:06:56 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:43:09 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 10:56:18 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 11:01:25 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memchr_tests.h"
+#ifndef TESTS_H
+# define TESTS_H
 
-int	big_n_test(void)
-{
-	if (ft_memchr("bonjour", 'i', 7) == NULL)
-		return (0);
-	else
-		return (-1);
-}
+# include <libunit.h>
+# include <libft.h>
+
+int	tests_launch(int *total);
+
+int	ok_test(void);
+int	ko_test(void);
+int	segfault_test(void);
+int	bus_err_test(void);
+
+int cause_bus_error();
+
+#endif

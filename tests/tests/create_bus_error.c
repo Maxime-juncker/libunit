@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_big_n.c                                         :+:      :+:    :+:   */
+/*   create_bus_error.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 18:06:56 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:43:09 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 10:52:48 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 11:08:01 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memchr_tests.h"
+#include <stdlib.h>
+#include <stdint.h>
+#include <signal.h>
 
-int	big_n_test(void)
+int cause_bus_error()
 {
-	if (ft_memchr("bonjour", 'i', 7) == NULL)
-		return (0);
-	else
-		return (-1);
+    raise(SIGBUS);
+	return (1);
 }

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_big_n.c                                         :+:      :+:    :+:   */
+/*   02_bigger_dup.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 18:06:56 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:43:09 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/25 17:35:00 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 10:42:24 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memchr_tests.h"
+#include "calloc_tests.h"
 
-int	big_n_test(void)
+int	bigger_dup(void)
 {
-	if (ft_memchr("bonjour", 'i', 7) == NULL)
+	if (cmp_malloc(ft_strdup("qwertyuiopasdfghjklzxcvbnm"), "qwertyuiopasdfghjklzxcvbnm", 26) == 0)
 		return (0);
 	else
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:35:00 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/25 18:06:28 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 10:43:14 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	eof_test(void)
 {
-	if (ft_memchr("bonjour", '\0', 8) == NULL)
+	if (ft_memchr("bonjour", '\0', 7) == NULL)
 		return (0);
 	else
 		return (-1);

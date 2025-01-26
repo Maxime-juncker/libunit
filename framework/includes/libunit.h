@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:14:00 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/25 19:30:30 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 10:33:28 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	load_test(t_list **lst, t_test *new);
 int		check_malloc(void *func_return, int expected_null);
 int		print_result(int test_pass, int total);
 void	print_test(t_test *test, const char *res);
+int		cmp_malloc(void *v1, void *v2, size_t n);
 
 #endif

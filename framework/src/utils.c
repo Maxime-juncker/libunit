@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:14:14 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:07:47 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:11:45 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	print_test(t_test *test, const char *res)
 	ft_printf("%s%s:%s\t", WHITE, test->test_name, RESET);
 	if (ft_strncmp(res, "OK", 2) == 0)
 		ft_printf("[%s%s%s]\n", GREEN, res, RESET);
-	else if (ft_strncmp(res, "SIGSEGV", 2) == 0)
+	else if (ft_strncmp(res, "SIGSEGV", 7) == 0)
 		ft_printf("[%s%s%s]\n", B_RED, res, RESET);
+	else if (ft_strncmp(res, "SIGBUS", 6) == 0)
+		ft_printf("[%s%s%s]\n", B_YELLOW, res, RESET);
 	else
 		ft_printf("[%s%s%s]\n", RED, res, RESET);
 }
@@ -53,4 +55,13 @@ int	check_malloc(void *func_return, int expected_null)
 	}
 	free(func_return);
 	return (1);
+}
+
+int	cmp_malloc(void *v1, void *v2, size_t n)
+{
+	int	code;
+
+	code = ft_memcmp(v1, v2, n);
+	free(v1);
+	return (code);
 }

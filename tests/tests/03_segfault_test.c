@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   04_big_n.c                                         :+:      :+:    :+:   */
+/*   03_segfault_test.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 18:06:56 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:43:09 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 10:54:37 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 11:04:44 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memchr_tests.h"
+#include "tests.h"
 
-int	big_n_test(void)
+int	segfault_test(void)
 {
-	if (ft_memchr("bonjour", 'i', 7) == NULL)
+	if (ft_atoi(NULL) == 0)
 		return (0);
 	else
 		return (-1);
