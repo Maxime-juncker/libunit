@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02_bigger_dup.c                                    :+:      :+:    :+:   */
+/*   02_ko_test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 17:35:00 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 12:09:57 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 10:54:32 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 11:24:30 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "calloc_tests.h"
+#include "tests.h"
 
-int	bigger_dup(void)
+int	ko_test(void)
 {
-	if (cmp_malloc(ft_strdup \
-			("qwertyuiopasdfghjklzxcvbnm"),
-			"qwertyuiopasdfghjklzxcvbnm", 26) == 0)
+	if (ft_strlen("hello") != 5)
 		return (0);
 	else
 		return (-1);

@@ -1,6 +1,6 @@
 MAKEFLAGS += --no-print-directory
 
-NAME = real-test
+NAME = tests
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 INCLUDES =	-I./atoi/				\
@@ -9,12 +9,12 @@ INCLUDES =	-I./atoi/				\
 			-I../framework/includes	\
 			-I../libft/includes		\
 
-TEST_SRCS = tests/00_launcher.c			\
-			tests/01_ok_test.c			\
-			tests/02_ko_test.c			\
-			tests/03_segfault_test.c	\
-			tests/04_bus_err.c			\
-			tests/create_bus_error.c	\
+TEST_SRCS = showcase/00_launcher.c			\
+			showcase/01_ok_test.c			\
+			showcase/02_ko_test.c			\
+			showcase/03_segfault_test.c		\
+			showcase/04_bus_err.c			\
+			showcase/create_bus_error.c		\
 
 
 TEST_OBJS = $(TEST_SRCS:.c=.o)

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02_bigger_dup.c                                    :+:      :+:    :+:   */
+/*   07_sigpipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 17:35:00 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 12:09:57 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 11:51:21 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 12:16:34 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "calloc_tests.h"
+#include "tests.h"
 
-int	bigger_dup(void)
+int	sigpipe_test(void)
 {
-	if (cmp_malloc(ft_strdup \
-			("qwertyuiopasdfghjklzxcvbnm"),
-			"qwertyuiopasdfghjklzxcvbnm", 26) == 0)
+	if (cause_sigpipe() == 1)
 		return (0);
 	else
 		return (-1);

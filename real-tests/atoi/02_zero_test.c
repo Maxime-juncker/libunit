@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03_null_dup.c                                      :+:      :+:    :+:   */
+/*   02_zero_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 17:35:00 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:39:01 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/25 16:34:43 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 12:14:31 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "calloc_tests.h"
+#include "atoi_tests.h"
 
-int	null_dup(void)
+int	zero_test(void)
 {
-	if (cmp_malloc(ft_strdup(NULL), "", 5) == 0)
+	if (ft_atoi("0") == 0)
 		return (0);
 	else
 		return (-1);

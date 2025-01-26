@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02_NULL_test.c                                     :+:      :+:    :+:   */
+/*   07_sigill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 16:34:43 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/25 16:35:28 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 11:51:21 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 12:18:29 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "atoi_tests.h"
+#include "tests.h"
 
-int	null_test(void)
+int	sigill_test(void)
 {
-	if (ft_atoi(NULL) == 0)
+	if (cause_sigill() == 1)
 		return (0);
 	else
 		return (-1);

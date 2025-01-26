@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02_bigger_dup.c                                    :+:      :+:    :+:   */
+/*   04_bus_err.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 17:35:00 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 12:09:57 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 10:54:49 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 11:24:27 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "calloc_tests.h"
+#include "tests.h"
 
-int	bigger_dup(void)
+int	bus_err_test(void)
 {
-	if (cmp_malloc(ft_strdup \
-			("qwertyuiopasdfghjklzxcvbnm"),
-			"qwertyuiopasdfghjklzxcvbnm", 26) == 0)
+	if (cause_bus_error() == 1)
 		return (0);
 	else
 		return (-1);

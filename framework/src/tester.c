@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:14:09 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 11:18:58 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:37:27 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ int	check_test(t_test *test, int code)
 		return (print_test(test, "SIGSEGV"));
 	if (WTERMSIG(code) == SIGBUS)
 		return (print_test(test, "SIGBUS"));
+	if (WTERMSIG(code) == SIGABRT)
+		return (print_test(test, "SIGABRT"));
+	if (WTERMSIG(code) == SIGFPE)
+		return (print_test(test, "SIGFPE"));
+	if (WTERMSIG(code) == SIGPIPE)
+		return (print_test(test, "SIGPIPE"));
+	if (WTERMSIG(code) == SIGILL)
+		return (print_test(test, "SIGILL"));
 	if (WEXITSTATUS(code) == 0)
 	{
 		print_test(test, "OK");

@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_strdup.c                                        :+:      :+:    :+:   */
+/*   00_launcher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 17:27:59 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 12:12:20 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 10:49:49 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 12:19:52 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "strdup_tests.h"
+#include "tests.h"
 
-int	strdup_launch(int *total)
+int	tests_launch(int *total)
 {
 	t_list	*tests;
 	int		total_pass;
 	int		size;
 
 	tests = NULL;
-	load_test(&tests, new_test("STRDUP", "basic_dup", &basic_strdup));
-	load_test(&tests, new_test("STRDUP", "bigger_dup", &bigger_dup));
-	load_test(&tests, new_test("STRDUP", "null_dup", &blank_dup));
+	load_test(&tests, new_test("TEST", "test-ok", &ok_test));
+	load_test(&tests, new_test("TEST", "test-ko", &ko_test));
+	load_test(&tests, new_test("TEST", "sigsegv", &segfault_test));
+	load_test(&tests, new_test("TEST", "bus-err", &bus_err_test));
+	load_test(&tests, new_test("TEST", "abort", &abort_test));
+	load_test(&tests, new_test("TEST", "sigfpe", &sigfpe_test));
+	load_test(&tests, new_test("TEST", "sigpipe", &sigpipe_test));
+	load_test(&tests, new_test("TEST", "sigpipe", &sigill_test));
 	size = ft_lstsize(tests);
 	*total += size;
 	total_pass = run_test(tests);

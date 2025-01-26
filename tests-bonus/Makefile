@@ -1,6 +1,6 @@
 MAKEFLAGS += --no-print-directory
 
-NAME = real-test
+NAME = tests
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 INCLUDES =	-I./atoi/				\
@@ -9,26 +9,16 @@ INCLUDES =	-I./atoi/				\
 			-I../framework/includes	\
 			-I../libft/includes		\
 
-TEST_SRCS = atoi/00_atoi.c					\
-			atoi/01_basic_test_atoi.c		\
-			atoi/02_zero_test.c				\
-			atoi/03_basic_overflow.c		\
-			atoi/04_basic_underflow.c		\
-			atoi/06_long_underflow.c		\
-			atoi/05_long_overflow.c			\
-			calloc/00_calloc.c				\
-			calloc/01_basic_test_calloc.c	\
-			calloc/02_bigger_calloc.c		\
-			calloc/03_calloc_zero.c			\
-			memchr/00_memchr.c				\
-			memchr/01_basic_test_memchr.c	\
-			memchr/02_not_found.c			\
-			memchr/03_eof.c					\
-			memchr/04_big_n.c				\
-			strdup/00_strdup.c				\
-			strdup/01_basic_dup.c			\
-			strdup/02_bigger_dup.c			\
-			strdup/03_blank_dup.c			\
+TEST_SRCS = showcase/00_launcher.c			\
+			showcase/01_ok_test.c			\
+			showcase/02_ko_test.c			\
+			showcase/03_segfault_test.c		\
+			showcase/04_bus_err.c			\
+			showcase/05_sigabrt.c			\
+			showcase/06_sigfpe.c			\
+			showcase/07_sigpipe.c			\
+			showcase/08_sigill.c			\
+			showcase/err_utils.c			\
 
 
 TEST_OBJS = $(TEST_SRCS:.c=.o)
