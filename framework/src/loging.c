@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   logging.c                                          :+:      :+:    :+:   */
+/*   loging.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:38:05 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 14:24:15 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 15:15:29 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	write_log(t_test *test, const char *res)
 	if (fd == -1)
 		return (-1);
 	size = ft_strlen(test->test_name) + ft_strlen(res) + 3;
-	msg = NULL;
 	msg = ft_calloc(size, 1);
 	if (msg == NULL)
 		return (-1);

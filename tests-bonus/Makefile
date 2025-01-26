@@ -1,6 +1,6 @@
 MAKEFLAGS += --no-print-directory
 
-NAME = tests
+NAME = bonus-tests
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 INCLUDES =	-I./atoi/				\
@@ -19,7 +19,6 @@ TEST_SRCS = showcase/00_launcher.c			\
 			showcase/07_sigpipe.c			\
 			showcase/08_sigill.c			\
 			showcase/err_utils.c			\
-
 
 TEST_OBJS = $(TEST_SRCS:.c=.o)
 MAIN_OBJ = main.o
@@ -71,7 +70,7 @@ test: all
 	./$(NAME)
 
 bonus:
-	$(MAKE) re BONUS=1 -C ../framework/
+	$(MAKE) all BONUS=1 -C ../framework/
 	$(MAKE) all
 
 .PHONY: all clean fclean re bonus

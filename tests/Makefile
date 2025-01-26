@@ -67,7 +67,7 @@ test: all
 	./$(NAME)
 
 bonus:
-	$(MAKE) re BONUS=1 -C ../framework/
+	$(MAKE) all BONUS=1 -C ../framework/
 	$(MAKE) all
 
 .PHONY: all clean fclean re bonus

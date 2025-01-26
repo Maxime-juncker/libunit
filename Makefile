@@ -31,6 +31,11 @@ clean:
 	$(MAKE) clean -C real-tests/
 	$(MAKE) clean -C tests-bonus/
 
-.PHONY: all re fclean clean
+bonus:
+	$(MAKE) bonus -C tests/
+	$(MAKE) bonus -C real-tests/
+	$(MAKE) bonus -C tests-bonus/
+
+.PHONY: all re fclean clean bonus
 
 .SILENT:
