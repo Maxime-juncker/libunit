@@ -30,7 +30,6 @@ ARGS = 1
 
 all: libft $(BIN_D)$(NAME)
 
-
 .PHONY: libft
 libft:
 	$(MAKE) -C libft

@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:14:14 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/25 19:30:21 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 10:07:47 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_test(t_test *test, const char *res)
 
 int	print_result(int test_pass, int total)
 {
-	ft_printf("\ntests results: %d/%d ", test_pass, total);
+	ft_printf("tests results: %d/%d ", test_pass, total);
 	if (test_pass < total)
 	{
 		ft_printf("%s[KO]%s\n", RED, RESET);
@@ -46,11 +46,11 @@ int	check_malloc(void *func_return, int expected_null)
 		free(func_return);
 		return (1);
 	}
-	else if (expected_null && func_return != NULL)
+	else if (!expected_null && func_return != NULL)
 	{
 		free(func_return);
-		return (0);
+		return (1);
 	}
 	free(func_return);
-	return (0);
+	return (1);
 }

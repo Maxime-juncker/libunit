@@ -1,52 +1,79 @@
-# Variables de configuration
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -rf
+MAKEFLAGS += --no-print-directory
 
-# Nom de l'exécutable final
-NAME = unit_tests
+NAME = real-test
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g3
+INCLUDES =	-I./atoi/				\
+			-I./calloc/				\
+			-I./memchr/				\
+			-I../framework/includes	\
+			-I../libft/includes		\
 
-# Sous-dossiers pour chaque test
-SUBDIRS = atoi calloc memchr
+TEST_SRCS = atoi/00_atoi.c					\
+			atoi/02_NULL_test.c				\
+			atoi/04_basic_underflow.c		\
+			atoi/06_long_underflow.c		\
+			atoi/01_basic_test_atoi.c		\
+			atoi/03_basic_overflow.c		\
+			atoi/05_long_overflow.c			\
+			calloc/00_calloc.c				\
+			calloc/01_basic_test_calloc.c	\
+			calloc/02_bigger_calloc.c		\
+			calloc/02_calloc_zero.c			\
+			memchr/00_memchr.c				\
+			memchr/01_basic_test_memchr.c	\
+			memchr/02_not_found.c			\
+			memchr/03_eof.c					\
+			memchr/04_big_n.c				\
 
-# Fichiers sources pour chaque sous-dossier
-SRC_ATOI = 00_launcher.c 01_basic_test.c 02_NULL_test.c
-SRC_CALLOC = 00_launcher.c 01_basic_test.c 02_bigger_test.c
-SRC_MEMCHR = 00_launcher.c 01_basic_test.c
+TEST_OBJS = $(TEST_SRCS:.c=.o)
+MAIN_OBJ = main.o
 
-# Conversion des fichiers sources en chemins complets
-SRC_ATOI_D := $(addprefix atoi/, $(SRC_ATOI))
-SRC_CALLOC_D := $(addprefix calloc/, $(SRC_CALLOC))
-SRC_MEMCHR_D := $(addprefix memchr/, $(SRC_MEMCHR))
+TEST_LIB = ../libft/bin/libft.a
+FRAMEWORK_LIB = ../framework/bin/libunit.a
 
-# Liste de tous les fichiers source
-SRCS = $(SRC_ATOI_D) $(SRC_CALLOC_D) $(SRC_MEMCHR_D)
+# colors
+RED = 			\033[31m
+GREEN = 		\033[32m
+YELLOW = 		\033[33m
+RESET = 		\033[0m
+BLUE = 			\033[34m
+CURSOR_OFF =	\e[?25l
+CURSOR_ON = 	\e[?25h
 
-# Conversion des fichiers .c en fichiers .o
-OBJ = $(SRCS:.c=.o)
+all: lib framework $(NAME)
 
-# Répertoire des fichiers objets
-OBJ_DIR = obj
+lib:
+	$(MAKE) -C ../libft/
 
-# Règle principale pour générer l'exécutable
-all: $(NAME)
+framework:
+	$(MAKE) -C ../framework/
 
-# Génération de l'exécutable final
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+$(NAME): $(TEST_OBJS) $(MAIN_OBJ) $(FRAMEWORK_LIB) $(TEST_LIB)
+	printf "$(BLUE)compiling: [$$(find . -type f -name "*.o" | wc -l)/$(shell find . -type f -name "*.c" | wc -l)] [OK]\r\n"
+	$(CC) $(CFLAGS) $(MAIN_OBJ) $(TEST_OBJS) $(FRAMEWORK_LIB) $(TEST_LIB)  $(INCLUDES) -o $(NAME)
+	printf "$(GREEN)$(NAME): success\n"
+	printf "\n---------------------$(CURSOR_ON)\n\n"
 
-# Règle pour compiler les fichiers .c en fichiers .o dans le répertoire obj/{subdir}/
-$(OBJ_DIR)/%/%.o: %/%.c
-	@mkdir -p $(OBJ_DIR)/$(dir $@)  # Crée le répertoire si nécessaire
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c $(FRAMEWORK_LIB) $(TEST_LIB)
+	printf "$(CURSOR_OFF)$(BLUE)"
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	printf "compiling: [$$(find . -type f -name "*.o" | wc -l)/$(shell find . -type f -name "*.c" | wc -l)]\r"
 
-# Nettoyage global
-.PHONY: clean fclean
 clean:
-	$(RM) $(OBJ_DIR)
+	$(MAKE) clean -C ../libft
+	$(MAKE) clean -C ../framework
+	rm -f $(MAIN_OBJ) $(TEST_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(MAKE) fclean -C ../libft
+	$(MAKE) fclean -C ../framework
+	rm -f $(NAME)
 
-# Règle pour relancer tout
 re: fclean all
+
+test: all
+	./$(NAME)
+
+.PHONY: all clean fclean re
+.SILENT:
