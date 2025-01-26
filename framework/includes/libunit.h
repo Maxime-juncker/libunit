@@ -6,12 +6,16 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:14:00 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 11:44:16 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:37:11 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBUNIT_H
 # define LIBUNIT_H
+
+# ifndef BONUS
+#  define BONUS 0
+# endif
 
 # include <libft.h>
 # include <sys/wait.h>
@@ -35,5 +39,10 @@ int		check_malloc(void *func_return, int expected_null);
 int		print_result(int test_pass, int total);
 int		print_test(t_test *test, const char *res);
 int		cmp_malloc(void *v1, void *v2, size_t n);
+int		get_name_value(const char *str);
+
+// logging.c
+int		write_log(t_test *test, const char *res);
+void	check_clear_log(t_test *test);
 
 #endif

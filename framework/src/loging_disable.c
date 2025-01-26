@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   03_blank_dup.c                                     :+:      :+:    :+:   */
+/*   loging_disable.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 17:35:00 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 13:50:44 by mjuncker         ###   ########.fr       */
+/*   Created: 2025/01/26 12:38:05 by mjuncker          #+#    #+#             */
+/*   Updated: 2025/01/26 14:24:47 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "strdup_tests.h"
+#include <libunit.h>
 
-int	blank_dup(void)
+#if !BONUS
+
+int	write_log(t_test *test, const char *res)
 {
-	if (cmp_malloc(ft_strdup(""), "", 1) == 0)
-		return (0);
-	else
-		return (-1);
+	(void)test;
+	(void)res;
+	return (0);
 }
+
+void	check_clear_log(t_test *test)
+{
+	(void)test;
+	return ;
+}
+
+#endif

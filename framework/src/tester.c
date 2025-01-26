@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:14:09 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 11:37:27 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:48:36 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	run_test(t_list *tests)
 	first = tests;
 	while (tests != NULL)
 	{
+		check_clear_log((t_test *)tests->content);
 		code = run_function(tests, first);
 		test_pass += check_test((t_test *)tests->content, code);
 		tests = tests->next;

@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:14:14 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 11:20:11 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:20:14 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	print_test(t_test *test, const char *res)
 		ft_printf("[%s%s%s]\n", RED, res, RESET);
 	else
 		ft_printf("[%s%s%s]\n", WHITE, res, RESET);
+	write_log(test, res);
 	return (0);
 }
 
@@ -75,4 +76,17 @@ int	cmp_malloc(void *v1, void *v2, size_t n)
 	code = ft_memcmp(v1, v2, n);
 	free(v1);
 	return (code);
+}
+
+int	get_name_value(const char *str)
+{
+	int	value;
+
+	value = 0;
+	while (*str)
+	{
+		value += *str;
+		str++;
+	}
+	return (value);
 }

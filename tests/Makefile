@@ -38,7 +38,7 @@ lib:
 	$(MAKE) -C ../libft/
 
 framework:
-	$(MAKE) -C ../framework/
+	$(MAKE) -C ../framework/ BONUS=0
 
 $(NAME): $(TEST_OBJS) $(MAIN_OBJ) $(FRAMEWORK_LIB) $(TEST_LIB)
 	printf "$(BLUE)compiling: [$$(find . -type f -name "*.o" | wc -l)/$(shell find . -type f -name "*.c" | wc -l)] [OK]\r\n"
@@ -66,5 +66,9 @@ re: fclean all
 test: all
 	./$(NAME)
 
-.PHONY: all clean fclean re
+bonus:
+	$(MAKE) re BONUS=1 -C ../framework/
+	$(MAKE) all
+
+.PHONY: all clean fclean re bonus
 .SILENT:

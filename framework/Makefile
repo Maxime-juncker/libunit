@@ -1,9 +1,12 @@
 NAME = libunit.a
-CFLAGS = -Wall -Wextra -Werror $(INCLUDES_D) -g3
+BONUS = 0
+CFLAGS = -Wall -Wextra -Werror $(INCLUDES_D) -D BONUS=$(BONUS)
 MAKEFLAGS += --no-print-directory
 
-SRC =	utils.c		\
-		tester.c	\
+SRC =	utils.c				\
+		tester.c			\
+		loging.c			\
+		loging_disable.c	\
 
 OBJ = $(SRC:.c=.o)
 
@@ -15,6 +18,7 @@ INCLUDES_D = -Iincludes/ -Ilibft/includes/
 
 OBJ := $(addprefix $(OBJ_D), $(OBJ))
 SRCS := $(addprefix $(SRCS_D), $(SRCS))
+
 
 # colors
 RESET 			= \033[0m
