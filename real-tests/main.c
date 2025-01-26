@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:34:04 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:45:58 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:20:58 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	main(void)
 	pass += launch("calloc", &calloc_launch, &total);
 	pass += launch("memchr", &memchr_launch, &total);
 	pass += launch("strdup", &strdup_launch, &total);
-
 	ft_printf("%s=== final result ===\n%s", YELLOW, RESET);
 	print_result(pass, total);
 }

@@ -6,13 +6,13 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:14:14 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 11:11:45 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:20:11 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libunit.h>
 
-void	print_test(t_test *test, const char *res)
+int	print_test(t_test *test, const char *res)
 {
 	ft_printf("[%s%s%s]:", GRAY, test->function_name, RESET);
 	ft_printf("%s%s:%s\t", WHITE, test->test_name, RESET);
@@ -22,8 +22,19 @@ void	print_test(t_test *test, const char *res)
 		ft_printf("[%s%s%s]\n", B_RED, res, RESET);
 	else if (ft_strncmp(res, "SIGBUS", 6) == 0)
 		ft_printf("[%s%s%s]\n", B_YELLOW, res, RESET);
-	else
+	else if (ft_strncmp(res, "SIGABRT", 6) == 0)
+		ft_printf("[%s%s%s]\n", B_YELLOW, res, RESET);
+	else if (ft_strncmp(res, "SIGFPE", 6) == 0)
+		ft_printf("[%s%s%s]\n", B_YELLOW, res, RESET);
+	else if (ft_strncmp(res, "SIGPIPE", 6) == 0)
+		ft_printf("[%s%s%s]\n", B_YELLOW, res, RESET);
+	else if (ft_strncmp(res, "SIGILL", 6) == 0)
+		ft_printf("[%s%s%s]\n", B_YELLOW, res, RESET);
+	else if (ft_strncmp(res, "KO", 2) == 0)
 		ft_printf("[%s%s%s]\n", RED, res, RESET);
+	else
+		ft_printf("[%s%s%s]\n", WHITE, res, RESET);
+	return (0);
 }
 
 int	print_result(int test_pass, int total)

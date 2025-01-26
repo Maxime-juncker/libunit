@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:34:15 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:08:13 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:21:00 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	atoi_launch(int *total)
 	load_test(&tests, new_test("ATOI", "basic_underflow", &basic_underflow));
 	load_test(&tests, new_test("ATOI", "long_overflow", &long_overflow));
 	load_test(&tests, new_test("ATOI", "long_underflow", &long_underflow));
-
 	size = ft_lstsize(tests);
 	total_pass = run_test(tests);
 	print_result(total_pass, size);

@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:56:18 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 11:01:25 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:22:46 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	ko_test(void);
 int	segfault_test(void);
 int	bus_err_test(void);
 
-int cause_bus_error();
+int	cause_bus_error(void);
 
 #endif

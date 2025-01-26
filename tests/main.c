@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:00:09 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 11:01:05 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:22:23 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(void)
 	pass = 0;
 	total = 0;
 	pass += launch("tests", &tests_launch, &total);
-
 	ft_printf("%s=== final result ===\n%s", YELLOW, RESET);
 	print_result(pass, total);
 }

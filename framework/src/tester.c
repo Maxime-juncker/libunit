@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:14:09 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 10:01:12 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:18:58 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,15 @@
 int	check_test(t_test *test, int code)
 {
 	if (WTERMSIG(code) == SIGSEGV)
-	{
-		print_test(test, "SIGSEGV");
-		return (0);
-	}
+		return (print_test(test, "SIGSEGV"));
 	if (WTERMSIG(code) == SIGBUS)
-	{
-		print_test(test, "SIGBUS");
-		return (0);
-	}
+		return (print_test(test, "SIGBUS"));
 	if (WEXITSTATUS(code) == 0)
 	{
 		print_test(test, "OK");
 		return (1);
 	}
-	print_test(test, "KO");
-	return (0);
+	return (print_test(test, "KO"));
 }
 
 int	run_function(t_list *tests, t_list *first)
