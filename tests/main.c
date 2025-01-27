@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 11:00:09 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/26 11:50:03 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:32:25 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ int	launch(const char *name, int (*f)(int *), int *total)
 
 int	main(void)
 {
-	int	pass;
-	int	total;
+	int	pass = 0;
+	int	total = 0;
 
-	pass = 0;
-	total = 0;
+	/* ADD TEST HERE */
+	//* pass += launch("test-name", &launcher-funciton, &total);
+
 	pass += launch("tests", &tests_launch, &total);
+
+
 	ft_printf("%s=== final result ===\n%s", YELLOW, RESET);
 	print_result(pass, total);
 }

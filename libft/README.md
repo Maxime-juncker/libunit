@@ -25,7 +25,7 @@ to compile as a static library
 make
 ```
 
-to compile an executable
+to compile an executable 
 (a main function need to be somewhere)
 ```
 make debug

@@ -1,41 +1,96 @@
+NAME = libunit.a
+BONUS = 0
+CFLAGS = -Wall -Wextra -Werror $(INCLUDES_D) -D BONUS=$(BONUS)
 MAKEFLAGS += --no-print-directory
 
-FRAMEWORK = framework/
-LIB = libft/
+SRC =	utils.c				\
+		tester.c			\
+		loging.c			\
+		loging_disable.c	\
 
-all:
-	$(MAKE) -C $(FRAMEWORK)
-	$(MAKE) -C $(LIB)
-	$(MAKE) -C tests/
-	$(MAKE) -C real-tests/
-	$(MAKE) -C tests-bonus/
+OBJ = $(SRC:.c=.o)
 
-re:
-	$(MAKE) re -C $(FRAMEWORK)
-	$(MAKE) re -C $(LIB)
-	$(MAKE) -C tests/
-	$(MAKE) -C real-tests/
-	$(MAKE) -C tests-bonus/
+OBJ_D = obj/
+SRCS_D = src/
+BIN_D = bin/
+LOG_D = log/
+INCLUDES_D = -Iincludes/ -Ilibft/includes/
 
-fclean:
-	$(MAKE) fclean -C $(FRAMEWORK)
-	$(MAKE) fclean -C $(LIB)
-	$(MAKE) fclean -C tests/
-	$(MAKE) fclean -C real-tests/
-	$(MAKE) fclean -C tests-bonus/
+OBJ := $(addprefix $(OBJ_D), $(OBJ))
+SRCS := $(addprefix $(SRCS_D), $(SRCS))
 
+
+# colors
+RESET 			= \033[0m
+RED 			= \033[31m
+GREEN 			= \033[32m
+YELLOW 			= \033[33m
+BLUE 			= \033[34m
+CURSOR_OFF 		= \e[?25l
+CURSOR_ON 		= \e[?25h
+
+RM = rm -fr
+ARGS = 1
+
+all: libft $(BIN_D)$(NAME)
+
+.PHONY: libft
+libft:
+	$(MAKE) -C libft
+
+$(BIN_D)$(NAME): $(OBJ) $(BIN_D)
+	printf "$(BLUE)compiling: [$$(ls obj | wc -l)/$(shell ls src | wc -l)] [OK]\r\n"
+	ar rcs $(BIN_D)$(NAME) $(OBJ) libft/bin/libft.a
+	printf "$(GREEN)$(NAME): success\n"
+	printf "\n---------------------$(CURSOR_ON)\n\n"
+
+$(OBJ_D)%.o : $(SRCS_D)%.c includes/libunit.h libft/bin/libft.a | $(OBJ_D)
+	printf "$(CURSOR_OFF)$(BLUE)"
+	printf "compiling: [$$(ls obj | wc -l)/$(shell ls src | wc -l)]\r"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: clean
 clean:
-	$(MAKE) clean -C $(FRAMEWORK)
-	$(MAKE) clean -C $(LIB)
-	$(MAKE) clean -C tests/
-	$(MAKE) clean -C real-tests/
-	$(MAKE) clean -C tests-bonus/
+	printf "$(RED)clean:\t$(NAME)\n\n"
+	$(MAKE) clean -C ./libft
+	$(RM) $(OBJ_D)
+	printf "$(RED)---------------------\n\n$(RESET)"
+	$(MAKE) clog
 
-bonus:
-	$(MAKE) bonus -C tests/
-	$(MAKE) bonus -C real-tests/
-	$(MAKE) bonus -C tests-bonus/
+.PHONY: fclean
+fclean:
+	$(MAKE) fclean -C ./libft
+	$(RM) $(BIN_D)
+	printf "$(RED)fclean:\t$(NAME)\n"
+	$(MAKE) clean
 
-.PHONY: all re fclean clean bonus
+.PHONY: clog
+clog:
+	$(RM) $(LOG_D)
+
+.PHONY: re
+re:
+	$(MAKE) fclean
+	$(MAKE) all
+
+.PHONY: test
+test: all
+	$(MAKE) test -C tests/
+
+# Create directories
+$(OBJ_D):
+	mkdir -p $(OBJ_D)
+
+$(LOG_D):
+	mkdir -p $(LOG_D)
+
+$(BIN_D):
+	mkdir -p $(BIN_D)
+
+.PHONY: debug
+debug: all $(LOG_D)
+	$(BIN_D)./push_swap $(ARGS) > $(LOG_D)$(shell date --iso=seconds).log
+	cat $(LOG_D)$(shell date --iso=seconds).log
+	echo "$(BLUE)[SAVED]: $(LOG_D)$(shell date --iso=seconds).log"
 
 .SILENT:

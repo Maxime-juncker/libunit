@@ -6,7 +6,7 @@
 /*   By: mjuncker <mjuncker@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:49:29 by mjuncker          #+#    #+#             */
-/*   Updated: 2025/01/25 15:43:58 by mjuncker         ###   ########.fr       */
+/*   Updated: 2025/01/25 15:42:12 by mjuncker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
-
-# define MAX_INT 2147483647
-# define MIN_INT -2147483648
 
 // colors
 # define RESET	"\033[0m"
@@ -45,6 +38,13 @@
 # define B_PURPLE	"\033[45m"
 # define B_CYAN		"\033[46m"
 # define B_WHITE	"\033[47m"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 typedef struct s_list
 {
